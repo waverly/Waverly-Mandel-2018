@@ -1,0 +1,13 @@
+@import "reset";
+@import "general";
+
+body {
+  background: #f9fafb;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  min-height: 100vh;
+  h1 {
+    color: red;
+  }
+}
