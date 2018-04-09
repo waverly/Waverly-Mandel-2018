@@ -18,7 +18,8 @@ module.exports = {
   entry: path.join(paths.SRC, "index.js"),
   output: {
     path: paths.DIST,
-    filename: "app.bundle.js"
+    filename: "app.bundle.js",
+    publicPath: "/"
   },
   // Tell webpack to use html plugin
   plugins: [
@@ -27,6 +28,9 @@ module.exports = {
     }),
     new ExtractTextPlugin("style.bundle.css") // CSS will be extracted to this bundle file -> ADDED IN THIS STEP
   ],
+  devServer: {
+    historyApiFallback: true
+  },
   // Loaders configuration
   // We are telling webpack to use "babel-loader" for .js and .jsx files
   module: {
@@ -57,21 +61,14 @@ module.exports = {
       }
     ]
   },
-  // Enable importing JS files without specifying their's extenstion
-  //
-  // So we can write:
-  // import MyComponent from './my-component';
-  //
-  // Instead of:
-  // import MyComponent from './my-component.jsx';
   resolve: {
     alias: {
       Src: path.resolve(__dirname, "src"),
       Static: path.resolve(__dirname, "static"),
       Components: path.resolve(__dirname, "src/js/components"),
       Views: path.resolve(__dirname, "src/js/views"),
-      Styles: path.resolve(__dirname, "src/css")
+      Styles: path.resolve(__dirname, "src/js/styles")
     },
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".svg.js"]
   }
 };
