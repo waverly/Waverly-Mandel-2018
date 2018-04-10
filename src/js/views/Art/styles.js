@@ -4,7 +4,9 @@ import { flexCenter, spacing } from "../../styles/layout";
 
 export const ArtWrapperStyles = css`
   ${flexCenter};
+  flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 `;
 
 export const SectionStyles = css`
@@ -13,6 +15,8 @@ export const SectionStyles = css`
   min-height: 100vh;
   padding: ${spacing.double};
   position: relative;
+  width: 100vw;
+  margin: ${spacing.double} 0;
 `;
 
 export const TitleStyles = css`

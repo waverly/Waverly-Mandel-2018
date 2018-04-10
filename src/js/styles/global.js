@@ -2,7 +2,7 @@
 
 import { injectGlobal } from "styled-components";
 import normalized from "./normalized";
-import { orange, yellow } from "./colors";
+import { orange, yellow, offwhite } from "./colors";
 
 injectGlobal`
 	${normalized}
@@ -11,7 +11,7 @@ injectGlobal`
 		font-size: 10px;
 		font-family: 'Helvetica Neue', helvetica, sans-serif;
 		font-weight: 300;
-		background-color: wheat;
+		background-color: ${offwhite};
 	}
 
 	form {
@@ -66,7 +66,16 @@ injectGlobal`
 	a {
 		text-decoration: none;
 		color: inherit;
+		cursor: pointer;
+		&:hover{
+			color: ${yellow};
+			h1, h2, h3, h4, a{
+				color: ${yellow};
+			}
+		}
 	}
+
+	h2{}
 
 	* {
 		box-sizing: border-box;

@@ -9,8 +9,9 @@ export const NavWrapperStyles = css`
 `;
 
 export const ExpandedNavStyles = css`
-  height: 100vh;
-  position: absolute;
+  height: 100vh
+  overflow: hidden;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
@@ -30,10 +31,14 @@ export const NavListStyles = css`
 
 export const HeaderStyles = css`
   ${flexCenter};
+  padding: ${spacing.double};
+  top: 0;
+  left: 0;
+  right: 0;
   justify-content: space-between;
   background-color: transparent;
   width: 100%;
-  position: relative;
+  position: fixed;
   z-index: 7;
 `;
 
@@ -45,6 +50,8 @@ export const CircleOneStyles = css`
   display: inline-block;
   margin-right: -15px;
   transition: all 800ms;
+  margin-left: ${props => (props.expanded ? "-17.5px" : "0")};
+  margin-right: ${props => (props.expanded ? "0px" : "-15px")};
 `;
 
 export const CircleTwoStyles = css`
@@ -55,6 +62,7 @@ export const CircleTwoStyles = css`
   display: inline-block;
   margin-left: -15px;
   transition: all 800ms;
+  margin-right: ${props => (props.expanded ? "-7.5px" : "0")};
 `;
 
 export const IconWrapperStyles = css`

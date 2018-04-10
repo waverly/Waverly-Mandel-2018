@@ -16,39 +16,52 @@ class App extends Component {
   constructor() {
     super();
     this.addData = this.addData.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 
     this.state = {
       art: [],
-      web: []
+      web: [],
+      width: 0,
+      height: 0
     };
   }
 
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
   addData(items) {
-    const art = items.filter(i => i.type === "art");
-    const web = items.filter(i => i.type === "web");
+    const newArt = items.filter(i => i.type === "art");
+    const newWeb = items.filter(i => i.type === "web");
+    let art = [...this.state.art];
+    let web = [...this.state.web];
+    newArt.forEach(n => art.push(n));
+    newWeb.forEach(n => web.push(n));
+
     this.setState({ art, web });
   }
 
   componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+
     Prismic.api(apiEndpoint).then(api => {
-      api.query().then(response => {
-        // console.log(response); // response is the response object, response.results holds the documents
-        // console.log(response.results);
-        this.addData(response.results);
-      });
+      api
+        .query(Prismic.Predicates.at("document.type", "web"), {
+          orderings: "[my.web.title]"
+        })
+        .then(response => {
+          this.addData(response.results);
+        });
     });
 
-    // for now - remove ordering
-    // Prismic.api(apiEndpoint).then(api => {
-    //   api
-    //     .query(Prismic.Predicates.at("document.type", "web"))
-    //     .then(response => {
-    //       console.log(response); // response is the response object, response.results holds the documents
-    //       console.log(response.results);
-    //       this.addData(response.results);
-    //     });
-    // });
-    // end of api
+    Prismic.api(apiEndpoint).then(api => {
+      api
+        .query(Prismic.Predicates.at("document.type", "art"))
+        .then(response => {
+          this.addData(response.results);
+        });
+    });
   }
 
   render() {
@@ -69,12 +82,16 @@ class App extends Component {
                 <Route
                   exact
                   path="/personal"
-                  render={props => <Art data={this.state.art} />}
+                  render={props => (
+                    <Art data={this.state.art} width={this.state.width} />
+                  )}
                 />
                 <Route
                   exact
                   path="/commercial"
-                  render={props => <Web data={this.state.web} />}
+                  render={props => (
+                    <Web data={this.state.web} width={this.state.width} />
+                  )}
                 />
               </Switch>
               {/* </ReactCSSTransitionReplace> */}

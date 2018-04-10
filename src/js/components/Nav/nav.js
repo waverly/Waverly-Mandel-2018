@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import {
   NavWrapperStyles,
   NavListStyles,
@@ -81,14 +82,43 @@ class Nav extends React.Component {
                 <h3>Web Design and Interactive Development</h3>
               </NavBlock>
             </Link>
-            <Link to={`/personal`} onClick={this.handleClick}>
-              <NavBlock>
+
+            <NavBlock>
+              <Link to={`/personal`} onClick={this.handleClick}>
                 <h2>Personal</h2>
+              </Link>
+              <Link
+                smooth
+                to="/personal#Interaction-Study"
+                onClick={this.handleClick}
+              >
                 <h3>Interaction Studies</h3>
-                <h3>Body Technique</h3>
+              </Link>
+              <Link
+                smooth
+                to="/personal#User-Experience"
+                onClick={this.handleClick}
+              >
                 <h3>User Experience</h3>
-              </NavBlock>
-            </Link>
+              </Link>
+              <Link smooth to="/personal#Zines" onClick={this.handleClick}>
+                <h3>Zines</h3>
+              </Link>
+              <Link
+                smooth
+                to="/personal#Support-Systems"
+                onClick={this.handleClick}
+              >
+                <h3>Support Systems</h3>
+              </Link>
+              <Link
+                smooth
+                to="/personal#Body-Technique"
+                onClick={this.handleClick}
+              >
+                <h3>Body Technique</h3>
+              </Link>
+            </NavBlock>
           </NavList>
         </ExpandedNav>
         <Header>
@@ -97,8 +127,8 @@ class Nav extends React.Component {
           </Link>
 
           <IconWrapper onClick={this.handleClick}>
-            <CircleOne />
-            <CircleTwo s />
+            <CircleOne expanded={this.state.expanded} />
+            <CircleTwo expanded={this.state.expanded} />
           </IconWrapper>
         </Header>
       </NavWrapper>

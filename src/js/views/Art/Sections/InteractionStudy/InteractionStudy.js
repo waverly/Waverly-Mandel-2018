@@ -22,7 +22,7 @@ const InteractionStudy = (props: Props) => {
     let stem = props.data[0].data;
     console.log(stem);
     return (
-      <Section>
+      <Section id="Interaction-Study">
         <Wrap>
           {stem
             ? stem.images.map((item, index) => (

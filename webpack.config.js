@@ -67,7 +67,8 @@ module.exports = {
       Static: path.resolve(__dirname, "static"),
       Components: path.resolve(__dirname, "src/js/components"),
       Views: path.resolve(__dirname, "src/js/views"),
-      Styles: path.resolve(__dirname, "src/js/styles")
+      Styles: path.resolve(__dirname, "src/js/styles"),
+      Utils: path.resolve(__dirname, "src/js/utils")
     },
     extensions: [".js", ".jsx", ".svg.js"]
   }
