@@ -20,7 +20,7 @@ const Title = styled.div`
 const InteractionStudy = (props: Props) => {
   if (props.data[0]) {
     let stem = props.data[0].data;
-    console.log(stem);
+    // console.log(stem);
     return (
       <Section id="Interaction-Study">
         <Wrap>

@@ -76,7 +76,7 @@ class App extends Component {
                 transitionEnterTimeout={1000}
                 transitionLeaveTimeout={1000}
               > */}
-              <Nav path="/" location={location} />
+              {/* <Nav path="/" location={location} /> */}
               <Switch location={location}>
                 <Route exact path="/" render={props => <Home />} />
                 <Route

@@ -6,6 +6,11 @@ import { orange, yellow } from "../../styles/colors";
 export const NavWrapperStyles = css`
   height: ${props => (props.expanded ? "100vh" : headerHeight)};
   padding: ${spacing.double};
+  position: relative;
+  z-index: 6;
+  svg{
+    fill: transparent;
+  }
 `;
 
 export const ExpandedNavStyles = css`
@@ -16,7 +21,6 @@ export const ExpandedNavStyles = css`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: lightblue;
   visibility: ${props => (props.expanded ? "visible" : "hidden")};
   display: flex;
   justify-content: center;
@@ -27,6 +31,8 @@ export const ExpandedNavStyles = css`
 export const NavListStyles = css`
   width: 60%;
   text-align: right;
+  position: relative;
+  z-index: 6;
 `;
 
 export const HeaderStyles = css`

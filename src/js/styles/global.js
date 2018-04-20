@@ -9,7 +9,7 @@ injectGlobal`
 
 	html {
 		font-size: 10px;
-		font-family: 'Helvetica Neue', helvetica, sans-serif;
+		font-family: 'Acumin-Medium', helvetica, sans-serif;
 		font-weight: 300;
 		background-color: ${offwhite};
 	}
@@ -103,5 +103,17 @@ injectGlobal`
 	  font-style: normal;
 	  font-weight: 200;
 	  src: url("/Static/fonts/BilboINC.ttf") format("truetype")}
+
+	@font-face {
+	  font-family: "Acumin-EL";
+	  font-style: normal;
+	  font-weight: 200;
+	  src: url("/Static/fonts/AcuminPro-ExtraLight.otf") format("opentype")}
+
+	@font-face {
+	  font-family: "Acumin-Medium";
+	  font-style: normal;
+	  font-weight: 200;
+	  src: url("/Static/fonts/AcuminPro-Medium.otf") format("opentype")}
 
 `;

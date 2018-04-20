@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
 import { HashLink as Link } from "react-router-hash-link";
+import Checkerboard from "Components/Checkerboard"
 import {
   NavWrapperStyles,
   NavListStyles,
@@ -120,10 +120,17 @@ class Nav extends React.Component {
               </Link>
             </NavBlock>
           </NavList>
+          <Checkerboard/>
         </ExpandedNav>
         <Header>
           <Link to={`/`}>
-            <h1>Waverly Mandel</h1>
+          <svg width="102.536px" height="55.58px" viewBox="0 0 102.536 55.58">
+            <path d="M13.439-38.549"/>
+            <polyline stroke="#F86738"points="12.992,11.413 20.689,41.351
+            30.992,14.095 41.636,41.892 50.992,11.413 "/>
+            <polyline stroke="#F86738" points="84.992,44.892 77.295,14.955 66.992,42.21
+            56.348,14.413 46.992,44.892 "/>
+          </svg>
           </Link>
 
           <IconWrapper onClick={this.handleClick}>

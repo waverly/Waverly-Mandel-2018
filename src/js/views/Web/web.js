@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 // why doesnt webpack filepath work?
+import Nav from 'Components/Nav'
 import { findNextInArray } from "../../utils/data";
 import {
   WebWrapperStyles,
@@ -55,8 +56,8 @@ class Web extends React.Component {
         if (active < self.props.data.length - 1) {
           newActive = active + 1;
         } else newActive = 0;
-        console.log(self.props.data.length);
-        console.log(active, newActive);
+        // console.log(self.props.data.length);
+        // console.log(active, newActive);
         self.setState({
           active: newActive
         });
@@ -70,6 +71,7 @@ class Web extends React.Component {
       console.log(stem);
       return (
         <WebWrapper>
+          <Nav/>
           <TextWrapper>
             {this.props.data.map((item, index) => (
               <a

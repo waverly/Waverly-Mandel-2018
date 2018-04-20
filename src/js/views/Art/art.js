@@ -5,6 +5,7 @@ import UserExperience from "./Sections/UserExperience";
 import Zines from "./Sections/Zines";
 import SupportSystems from "./Sections/SupportSystems";
 import BodyTechnique from "./Sections/BodyTechnique";
+import Nav from 'Components/Nav'
 
 import {
   ArtWrapperStyles,
@@ -28,6 +29,7 @@ const Art = (props: Props) => {
     let BTData = props.data.filter(i => i.uid === "body-technique");
     return (
       <ArtWrapper>
+        <Nav/>
         <InteractionStudy data={ISData} />
         <UserExperience data={UXData} />
         <Zines data={ZineData} />
