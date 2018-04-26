@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { SectionStyles, TitleStyles } from "../../styles.js";
+import {
+  SectionStyles,
+  TitleStyles,
+  invisibleTitleStyles,
+  visibleTitleStyles
+} from "../../styles.js";
 import { ISStyles } from "./styles";
 
 import { Switch, Route } from "react-router-dom";
@@ -17,25 +22,52 @@ const Title = styled.div`
   ${TitleStyles};
 `;
 
-const InteractionStudy = (props: Props) => {
-  if (props.data[0]) {
-    let stem = props.data[0].data;
-    // console.log(stem);
-    return (
-      <Section id="Interaction-Study">
-        <Wrap>
-          {stem
-            ? stem.images.map((item, index) => (
-                <img key={index} src={item.image.url} alt="" />
-              ))
-            : " "}
-        </Wrap>
-        <Title>
-          <p>{stem.title["0"].text}</p>
-        </Title>
-      </Section>
+class InteractionStudy extends React.Component {
+  constructor() {
+    super();
+
+    this.onChange = this.onChange.bind(this);
+    this.state = {
+      visible: false
+    };
+  }
+
+  onChange(isVisible) {
+    console.log(
+      "interaction study is now %s",
+      isVisible ? "visible" : "hidden"
     );
-  } else return "Loading...";
-};
+    this.setState({
+      visible: isVisible ? true : false
+    });
+  }
+
+  render() {
+    const VisibilitySensor = require("react-visibility-sensor");
+
+    if (this.props.data[0]) {
+      let stem = this.props.data[0].data;
+      return (
+        <Section id="Interaction-Study">
+          <VisibilitySensor onChange={this.onChange} />
+          <Title
+            style={
+              this.state.visible ? visibleTitleStyles : invisibleTitleStyles
+            }
+          >
+            <p>{stem.title["0"].text}</p>
+          </Title>
+          <Wrap>
+            {stem
+              ? stem.images.map((item, index) => (
+                  <img key={index} src={item.image.url} alt="" />
+                ))
+              : " "}
+          </Wrap>
+        </Section>
+      );
+    } else return " ";
+  }
+}
 
 export default InteractionStudy;

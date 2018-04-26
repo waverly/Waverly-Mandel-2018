@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 // why doesnt webpack filepath work?
-import Nav from 'Components/Nav'
+import Nav from "Components/Nav";
 import { findNextInArray } from "../../utils/data";
 import {
   WebWrapperStyles,
@@ -24,40 +24,59 @@ const VideoWrapper = styled.div`
   ${VideoWrapperStyles};
 `;
 
-const WebTitle = styled.h2`
+const WebTitle = styled.div`
   ${WebTitleStyles};
 `;
+
+const Subtitle = styled.h4``;
 
 const GitHub = styled.h2`
   margin-top: 2em;
 `;
 
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+`;
+
+const fullOpacity = {
+  opacity: 1,
+  transition: "1s all"
+};
+
+const noOpacity = {
+  opacity: 0
+};
+
 class Web extends React.Component {
   constructor() {
     super();
     this.handleHover = this.handleHover.bind(this);
+    this.activeMobile = this.activeMobile.bind(this);
 
     this.state = {
-      active: 0
+      active: 0,
+      mounted: false
     };
   }
 
-  handleHover(i) {
-    this.setState({ active: i });
-  }
-
-  componentDidMount() {
-    // may need to refactor to get variable list length from self.props.data.length once' it's ensure that self.data has loaded
-    if (this.props.width < 775) {
+  activeMobile() {
+    if (this.props.width != 0 && this.props.width < 775) {
+      console.log("inside of the fx");
       let self = this;
+      console.log(this.props.width);
       setInterval(function() {
+        console.log("in set interval");
         let newActive;
         let active = self.state.active;
         if (active < self.props.data.length - 1) {
           newActive = active + 1;
         } else newActive = 0;
-        // console.log(self.props.data.length);
-        // console.log(active, newActive);
         self.setState({
           active: newActive
         });
@@ -65,14 +84,28 @@ class Web extends React.Component {
     }
   }
 
+  handleHover(i) {
+    this.setState({ active: i });
+  }
+
+  componentWillUnmount() {}
+
+  componentDidMount() {
+    setTimeout(this.activeMobile, 2000);
+  }
+
   render() {
     if (this.props.data[0]) {
       let stem = this.props.data;
-      console.log(stem);
       return (
-        <WebWrapper>
-          <Nav/>
+        <WebWrapper
+        // style={this.state.mounted ? fullOpacity : noOpacity}
+        >
+          <Nav />
           <TextWrapper>
+            <a target="_blank" href="https://github.com/waverly">
+              <GitHub>Github</GitHub>
+            </a>
             {this.props.data.map((item, index) => (
               <a
                 key={index}
@@ -84,15 +117,15 @@ class Web extends React.Component {
                   onMouseOver={() => this.handleHover(index)}
                   active={this.state.active}
                 >
-                  {item.data.title[0].text}
+                  <h2>{item.data.title[0].text}</h2>
+                  <h4>
+                    {item.data.tagline[0] ? item.data.tagline[0].text : " "}
+                  </h4>
                 </WebTitle>
               </a>
             ))}
-            <a target="_blank" href="https://github.com/waverly">
-              <GitHub>Github</GitHub>
-            </a>
           </TextWrapper>
-
+          <Overlay />
           <VideoWrapper>
             <video
               width="100%"
@@ -104,7 +137,7 @@ class Web extends React.Component {
           </VideoWrapper>
         </WebWrapper>
       );
-    } else return "Loading";
+    } else return " ";
   }
 }
 

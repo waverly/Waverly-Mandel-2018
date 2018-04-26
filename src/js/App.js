@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Prismic from "prismic-javascript";
-import ReactCSSTransitionReplace from "react-css-transition-replace";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Nav from "Components/Nav";
 import Home from "Views/HomeDir";
 import Art from "Views/Art";
@@ -70,13 +70,6 @@ class App extends Component {
         <Route
           render={({ location }) => (
             <div key={location.pathname}>
-              {/* this feature was making nav buggy */}
-              {/* <ReactCSSTransitionReplace
-                transitionName="fade"
-                transitionEnterTimeout={1000}
-                transitionLeaveTimeout={1000}
-              > */}
-              {/* <Nav path="/" location={location} /> */}
               <Switch location={location}>
                 <Route exact path="/" render={props => <Home />} />
                 <Route
@@ -94,7 +87,6 @@ class App extends Component {
                   )}
                 />
               </Switch>
-              {/* </ReactCSSTransitionReplace> */}
             </div>
           )}
         />

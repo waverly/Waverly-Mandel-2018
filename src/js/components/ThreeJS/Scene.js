@@ -1,8 +1,11 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react'
+import { Easing, Tween, autoPlay } from 'es6-tween'
 import * as THREE from 'three'
 import MarbleTexture from "Static/marble.jpg";
 import Checkerboard from "Static/checkerboard.jpg";
+import RedCheckerboard from "Static/redcheckers.png"
+import Concrete from 'Static/concrete.jpg'
 
 const OrbitControls = require('three-orbit-controls')(THREE)
 
@@ -35,8 +38,12 @@ class Scene extends Component {
     // colored ball
     // const material = new THREE.MeshLambertMaterial({ color: '#433F81' })
     // textured ball
-    const texture = new THREE.TextureLoader().load( Checkerboard );
+    const texture = new THREE.TextureLoader().load( RedCheckerboard );
     const material = new THREE.MeshStandardMaterial( { map: texture } );
+    material.roughnessMap = new THREE.TextureLoader().load( Concrete );
+    material.bumpMap = new THREE.TextureLoader().load( Concrete );
+    material.bumpScale = 0;
+    material.roughness = .1;
 
     // create sphere and elevate it above the plane
     const sphere = this.getSphere(material, 5, 24);

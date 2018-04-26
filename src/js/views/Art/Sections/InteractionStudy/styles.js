@@ -11,9 +11,20 @@ export const ISStyles = css`
   }
 
   @media screen and (max-width: 1000px) {
+    padding-top: 10em;
     justify-content: center;
     img {
-      width: 80%;
+      width: 70%;
+      margin: 2em 0;
+    }
+  }
+
+  @media screen and (max-width: 775px) {
+    padding-top: 10em;
+    justify-content: center;
+    img {
+      width: 100%;
+      margin: 1em 0;
     }
   }
 `;

@@ -4,34 +4,26 @@ import { flexCenter, spacing, headerHeight } from "../../styles/layout";
 import { orange, yellow } from "../../styles/colors";
 
 export const NavWrapperStyles = css`
-  height: ${props => (props.expanded ? "100vh" : headerHeight)};
-  padding: ${spacing.double};
+  height: headerHeight;
   position: relative;
   z-index: 6;
-  svg{
+  svg {
     fill: transparent;
   }
 `;
 
-export const ExpandedNavStyles = css`
-  height: 100vh
-  overflow: hidden;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  visibility: ${props => (props.expanded ? "visible" : "hidden")};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 6;
+export const NameStyles = css`
+  @media screen and (max-width: 775px) {
+    display: none;
+  }
 `;
 
 export const NavListStyles = css`
   width: 60%;
-  text-align: right;
-  position: relative;
+  text-align: left;
+  position: fixed;
+  top: 50px;
+  left: ${spacing.double};
   z-index: 6;
 `;
 
@@ -46,6 +38,9 @@ export const HeaderStyles = css`
   width: 100%;
   position: fixed;
   z-index: 7;
+  @media screen and (max-width: 775px) {
+    justify-content: center;
+  }
 `;
 
 export const CircleOneStyles = css`

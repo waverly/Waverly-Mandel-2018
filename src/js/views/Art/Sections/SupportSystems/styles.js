@@ -1,6 +1,32 @@
 import { css } from "styled-components";
 import { flexCenter, spacing } from "Styles/layout";
 
+export const ContentWrapperStyles = css`
+  ${flexCenter};
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  line-height: 22px;
+
+  img {
+    max-width: 80%;
+    align-self: center;
+    position: absolute;
+  }
+
+  @media screen and (max-width: 775px) {
+    div {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+`;
+
 export const VideoBgStyles = css`
   position: absolute;
   top: 0;

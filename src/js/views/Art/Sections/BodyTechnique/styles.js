@@ -22,7 +22,23 @@ export const VideoBgStyles = css`
     transform: translateX(-50%) translateY(-50%);
     background-size: cover;
   }
+`;
+
+export const ImgWrapStyles = css`
+  max-width: 60%;
+  margin: 2em;
+
+  img {
+    width: 100%;
+  }
+
   @media screen and (max-width: 1000px) {
+    max-width: 80%;
+  }
+
+  @media screen and (max-width: 775px) {
+    max-width: 100%;
+    margin: 2em 0;
   }
 `;
 
@@ -30,6 +46,15 @@ export const TextWrapStyles = css`
   display: block;
   position: relative;
   text-align: center;
+
+  h3 {
+    margin: 0.5em 0;
+  }
+
+  a {
+    font-weight: 800;
+    border-bottom: 1px solid;
+  }
 
   @media screen and (max-width: 1000px) {
   }
