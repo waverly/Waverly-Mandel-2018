@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 import { flexCenter, spacing } from "Styles/layout";
+import { yellow } from "Styles/colors";
 
 export const VideoBgStyles = css`
   position: absolute;
@@ -8,6 +9,7 @@ export const VideoBgStyles = css`
   right: 0;
   bottom: 0;
   video {
+    filter: grayscale(1) contrast(1.5);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -30,6 +32,14 @@ export const TextWrapStyles = css`
   display: block;
   position: relative;
   text-align: center;
+
+  a {
+    h2 {
+      &:hover {
+        color: ${yellow};
+      }
+    }
+  }
 
   @media screen and (max-width: 1000px) {
   }

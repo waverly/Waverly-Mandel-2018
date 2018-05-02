@@ -3,12 +3,13 @@ import { flexCenter, spacing } from "../../styles/layout";
 import { orange, yellow, offwhite } from "../../styles/colors";
 
 export const HomeWrapperStyles = css`
-  ${flexCenter};
-  height: 100vh;
-  position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
   text-align: center;
   display: flex;
   justify-content: center;

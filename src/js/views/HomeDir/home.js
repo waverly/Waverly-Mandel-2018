@@ -37,6 +37,10 @@ const noOpacity = {
   opacity: 0
 };
 
+const checkerStyles = {
+  top: 0
+};
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -148,7 +152,7 @@ class Home extends React.Component {
             </Subsection>
           </Section>
         </HomeContent>
-        <Scene />
+        <Scene styles={checkerStyles} />
         <Checkerboard />
       </HomeWrapper>
     );

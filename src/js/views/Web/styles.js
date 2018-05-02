@@ -7,20 +7,21 @@ export const WebWrapperStyles = css`
   ${flexCenter};
   height: 100vh;
   width: 100vw;
-  position: absolute;
+  position: relative;
   top: 0;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: black;
 `;
 
 export const TextWrapperStyles = css`
   text-align: right;
   width: 60%;
-  top: 10%;
+  top: 200px;
   min-height: 60%;
   position: relative;
   z-index: 5;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
   a {
     &:hover {
       h2 {
@@ -30,7 +31,7 @@ export const TextWrapperStyles = css`
   }
   @media screen and (max-width: 775px) {
     width: 100%;
-    top: 20%;
+    top: 250px;
     padding: 10px;
     text-align: center;
   }

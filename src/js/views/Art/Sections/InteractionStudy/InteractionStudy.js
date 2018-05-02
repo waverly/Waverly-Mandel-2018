@@ -33,10 +33,6 @@ class InteractionStudy extends React.Component {
   }
 
   onChange(isVisible) {
-    console.log(
-      "interaction study is now %s",
-      isVisible ? "visible" : "hidden"
-    );
     this.setState({
       visible: isVisible ? true : false
     });

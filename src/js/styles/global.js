@@ -120,19 +120,19 @@ injectGlobal`
 	  font-family: "Bilbo";
 	  font-style: normal;
 	  font-weight: 200;
-	  src: url("/Static/fonts/BilboINC.ttf") format("truetype")}
+	  src: url("./BilboINC.ttf") format("truetype")}
 
 	@font-face {
 	  font-family: "Acumin-EL";
 	  font-style: normal;
 	  font-weight: 200;
-	  src: url("/Static/fonts/AcuminPro-ExtraLight.otf") format("opentype")}
+	  src: url("./AcuminPro-ExtraLight.otf") format("opentype")}
 
 	@font-face {
 	  font-family: "Acumin-Medium";
 	  font-style: normal;
 	  font-weight: 200;
-	  src: url("/Static/fonts/AcuminPro-Medium.otf") format("opentype")}
+	  src: url("./AcuminPro-Medium.otf") format("opentype")}
 
 		.fade-enter {
 		  opacity: 0;

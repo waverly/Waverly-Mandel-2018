@@ -5,6 +5,7 @@ import Nav from "Components/Nav";
 import Home from "Views/HomeDir";
 import Art from "Views/Art";
 import Web from "Views/Web/index.js";
+import Video from "Views/Video/index.js";
 
 import "./styles/global";
 
@@ -86,6 +87,7 @@ class App extends Component {
                     <Web data={this.state.web} width={this.state.width} />
                   )}
                 />
+                <Route exact path="/video" render={props => <Video />} />
               </Switch>
             </div>
           )}

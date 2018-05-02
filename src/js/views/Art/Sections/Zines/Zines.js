@@ -39,12 +39,10 @@ class Zines extends React.Component {
 
   handleHover(i) {
     console.log("inside handle hover");
-
     this.setState({ active: i });
   }
 
   onChange(isVisible) {
-    console.log("zines is now %s", isVisible ? "visible" : "hidden");
     this.setState({
       visible: isVisible ? true : false
     });
@@ -66,22 +64,34 @@ class Zines extends React.Component {
             <p>{stem.title[0].text}</p>
           </Title>
           <VideoBg>
+            {/* <video
+              controls
+              width="100%"
+              muted
+              autoPlay
+              playsInline
+              // src={stem.videos[`${this.state.active}`].video.url}
+              src="https://prismic-io.s3.amazonaws.com/waverly%2F36926cf0-9f1e-4f2f-a94e-4e505f67e1dd_current-archive.mp4"
+              controls
+            /> */}
             <video
               width="100%"
               muted
               autoPlay
+              playsInline
               src={stem.videos[`${this.state.active}`].video.url}
             />
           </VideoBg>
           <TextWrap>
             {stem.titles.map((item, index) => (
-              <h2
-                onClick={() => this.handleHover(index)}
-                onMouseOver={() => this.handleHover(index)}
-                key={index}
-              >
-                {item.title1[0].text}
-              </h2>
+              <a target="_blank" key={index} href={item.link.url}>
+                <h2
+                  onClick={() => this.handleHover(index)}
+                  onMouseOver={() => this.handleHover(index)}
+                >
+                  {item.title1[0].text}
+                </h2>
+              </a>
             ))}
           </TextWrap>
         </Section>

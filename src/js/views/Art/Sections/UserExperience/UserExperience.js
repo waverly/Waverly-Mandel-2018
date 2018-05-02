@@ -46,7 +46,6 @@ class UserExperience extends React.Component {
   }
 
   onChange(isVisible) {
-    console.log("user experience is now %s", isVisible ? "visible" : "hidden");
     this.setState({
       visible: isVisible ? true : false
     });
@@ -79,6 +78,7 @@ class UserExperience extends React.Component {
               width="100%"
               muted
               autoPlay
+              playsInline
               src={stem.videos[`${this.state.active}`].video.url}
             />
           </VideoWrap>

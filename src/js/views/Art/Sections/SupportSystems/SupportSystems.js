@@ -66,8 +66,8 @@ const Slide = props => {
 };
 
 class SupportSystems extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.onChange = this.onChange.bind(this);
     this.handleCycle = this.handleCycle.bind(this);
     this.next = this.next.bind(this);
@@ -80,33 +80,23 @@ class SupportSystems extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data.length > 0) {
-      nextProps.data[0].data.images.map(i =>
-        this.state.slides.push(i.image.url)
-      );
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.data.length > 0) {
+  //     nextProps.data[0].data.images.map(i =>
+  //       this.state.slides.push(i.image.url)
+  //     );
+  //   }
+  // }
 
   next() {
     const activeSlide =
-      this.state.activeSlide === Object.keys(this.state.slides).length - 1
+      this.state.activeSlide === this.props.data[0].data.images.length - 1
         ? 0
         : this.state.activeSlide + 1;
     this.setState({
       activeSlide
     });
   }
-
-  // previous() {
-  //   const activeSlide =
-  //     this.state.activeSlide === 0
-  //       ? Object.keys(this.state.slides).length - 1
-  //       : this.state.activeSlide - 1;
-  //   this.setState({
-  //     activeSlide
-  //   });
-  // }
 
   handleCycle() {
     if (index < 6) {
@@ -117,7 +107,6 @@ class SupportSystems extends React.Component {
   }
 
   onChange(isVisible) {
-    console.log("SUPPORT SYSTEMS is now %s", isVisible ? "visible" : "hidden");
     this.setState({
       visible: isVisible ? true : false
     });
@@ -139,12 +128,11 @@ class SupportSystems extends React.Component {
             <p>{stem.title[0].text}</p>
           </Title>
           <ContentWrapper className="slideshow" onClick={this.next}>
-            {this.state.slides.map((s, index) => {
-              const currentSlide = this.state.slides[index];
-              console.log(currentSlide);
+            {stem.images.map((s, index) => {
+              const currentSlide = stem.images[index].image.url;
               return (
                 <Slide
-                  key={s}
+                  key={stem.images[index].image.url}
                   image={currentSlide}
                   index={index}
                   active={index === this.state.activeSlide}

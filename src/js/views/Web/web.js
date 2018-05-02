@@ -57,7 +57,7 @@ class Web extends React.Component {
   constructor() {
     super();
     this.handleHover = this.handleHover.bind(this);
-    this.activeMobile = this.activeMobile.bind(this);
+    // this.activeMobile = this.activeMobile.bind(this);
 
     this.state = {
       active: 0,
@@ -65,24 +65,24 @@ class Web extends React.Component {
     };
   }
 
-  activeMobile() {
-    if (this.props.width != 0 && this.props.width < 775) {
-      console.log("inside of the fx");
-      let self = this;
-      console.log(this.props.width);
-      setInterval(function() {
-        console.log("in set interval");
-        let newActive;
-        let active = self.state.active;
-        if (active < self.props.data.length - 1) {
-          newActive = active + 1;
-        } else newActive = 0;
-        self.setState({
-          active: newActive
-        });
-      }, 5000);
-    }
-  }
+  // activeMobile() {
+  //   if (this.props.width != 0 && this.props.width < 775) {
+  //     console.log("inside of the fx");
+  //     let self = this;
+  //     console.log(this.props.width);
+  //     setInterval(function() {
+  //       console.log("in set interval");
+  //       let newActive;
+  //       let active = self.state.active;
+  //       if (active < self.props.data.length - 1) {
+  //         newActive = active + 1;
+  //       } else newActive = 0;
+  //       self.setState({
+  //         active: newActive
+  //       });
+  //     }, 5000);
+  //   }
+  // }
 
   handleHover(i) {
     this.setState({ active: i });
@@ -91,7 +91,7 @@ class Web extends React.Component {
   componentWillUnmount() {}
 
   componentDidMount() {
-    setTimeout(this.activeMobile, 2000);
+    // setTimeout(this.activeMobile, 2000);
   }
 
   render() {
@@ -115,7 +115,7 @@ class Web extends React.Component {
                 <WebTitle
                   id={index}
                   onMouseOver={() => this.handleHover(index)}
-                  active={this.state.active}
+                  active={this.props.width > 800 && this.state.active}
                 >
                   <h2>{item.data.title[0].text}</h2>
                   <h4>
@@ -127,13 +127,24 @@ class Web extends React.Component {
           </TextWrapper>
           <Overlay />
           <VideoWrapper>
-            <video
-              width="100%"
-              muted
-              loop
-              autoPlay
-              src={stem[`${this.state.active}`].data.video.url}
-            />
+            {this.props.width > 800 ? (
+              <video
+                width="100%"
+                muted
+                loop
+                autoPlay
+                playsInline
+                src={stem[`${this.state.active}`].data.video.url}
+              />
+            ) : (
+              <video id="background-video" muted playsInline loop autoPlay>
+                <source
+                  src="https://prismic-io.s3.amazonaws.com/waverly%2Fd8f4e083-1529-4c00-a8a8-d678642d2708_static.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            )}
           </VideoWrapper>
         </WebWrapper>
       );

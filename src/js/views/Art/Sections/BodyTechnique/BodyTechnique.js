@@ -41,7 +41,6 @@ class BodyTechnique extends React.Component {
   }
 
   onChange(isVisible) {
-    console.log("BODY TECHNIQUE is now %s", isVisible ? "visible" : "hidden");
     this.setState({
       visible: isVisible ? true : false
     });
@@ -53,7 +52,7 @@ class BodyTechnique extends React.Component {
     if (this.props.data[0]) {
       let stem = this.props.data[0].data;
       return (
-        <Section>
+        <Section id="Body-Technique">
           <VisibilitySensor onChange={this.onChange} />
           <Title
             style={
@@ -69,7 +68,7 @@ class BodyTechnique extends React.Component {
             <h3>{stem.textblock[0].text}</h3>
             <h3>
               {stem.textblock2[0].text}{" "}
-              <a href={stem.textblock2Link} target="_blank">
+              <a href={stem.textblock2link.url} target="_blank">
                 here
               </a>
             </h3>

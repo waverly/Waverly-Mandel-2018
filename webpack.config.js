@@ -28,9 +28,9 @@ module.exports = {
     }),
     new ExtractTextPlugin("style.bundle.css") // CSS will be extracted to this bundle file -> ADDED IN THIS STEP
   ],
-  // devServer: {
-  //   historyApiFallback: true
-  // },
+  devServer: {
+    historyApiFallback: true
+  },
   // Loaders configuration
   // We are telling webpack to use "babel-loader" for .js and .jsx files
   module: {
